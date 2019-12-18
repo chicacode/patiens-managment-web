@@ -1,6 +1,7 @@
 // Main file Project BACKEND
 const express = require('express');
 const mongoose = require('mongoose');
+const routes = require('./routes');
 
 // create server
 const app = express();
@@ -14,6 +15,8 @@ mongoose.connect('mongodb://localhost/veterinaria', {
     useFindAndModify: false
 });
 
+// habilitar Routing - Middlewares
+app.use('/', routes())
 
 // Puerto arrancar servidor
 app.listen(4000, () => {
