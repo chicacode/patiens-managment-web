@@ -24,9 +24,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', routes())
 
 // Puerto arrancar servidor
-app.listen(4000, () => {
-    console.log('Servidor funcionando')
-})
+app.listen(5000, () => {
+    console.log('Servidor funcionando');
+});
 
 
 

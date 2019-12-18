@@ -8,8 +8,7 @@ module.exports = function(){
     router.post('/pacientes', 
     //tenemos acceso a todas las funciones
         pacienteController.nuevoCliente
-    )
-
+    );
 
     return router; // necesitamos que esté disponible en todas las rutas
 }
