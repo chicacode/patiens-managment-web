@@ -12,8 +12,14 @@ module.exports = function(){
 
     // Get all registers from Database
     router.get('/pacientes', 
-    pacienteController.obtenerPacientes
+        pacienteController.obtenerPacientes
     );
+
+    // Get one specific patient
+    router.get('/pacientes/:id',
+        pacienteController.obtenerPaciente
+    );
+
 
     return router; // necesitamos que esté disponible en todas las rutas
 }
