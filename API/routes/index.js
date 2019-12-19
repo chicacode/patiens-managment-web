@@ -20,6 +20,11 @@ module.exports = function(){
         pacienteController.obtenerPaciente
     );
 
+    // actualizar un registro con ID específico
+    router.put('/pacientes/:id/',
+        pacienteController.actualizarPAciente
+    );
+
 
     return router; // necesitamos que esté disponible en todas las rutas
 }

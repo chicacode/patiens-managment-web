@@ -37,4 +37,14 @@ exports.obtenerPaciente = async(req, res, next) => {
     }
 }
 
+// actualizar Paciente Metodo
+exports.actualizarPAciente = (req,res,next) => {
+    try{
+
+    }catch(error){
+        console.log(error);
+        next();
+    }
+}
+
 // params: son los parametros de la ruta
