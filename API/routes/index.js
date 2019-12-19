@@ -22,9 +22,13 @@ module.exports = function(){
 
     // actualizar un registro con ID específico
     router.put('/pacientes/:id/',
-        pacienteController.actualizarPAciente
+        pacienteController.actualizarPaciente
     );
 
+    // eliminar un paciente por su ID
+    router.delete('/pacientes/:id', 
+        pacienteController.eliminarPaciente
+    );
 
     return router; // necesitamos que esté disponible en todas las rutas
 }

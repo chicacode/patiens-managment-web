@@ -38,12 +38,24 @@ exports.obtenerPaciente = async(req, res, next) => {
 }
 
 // actualizar Registro Paciente por su ID Metodo 
-exports.actualizarPAciente = async (req,res,next) => {
+exports.actualizarPaciente = async (req, res, next) => {
     try{                        // metodo de mongo para update
     const paciente = await Paciente.findOneAndUpdate({_id : req.params.id}, req.body, {
         new: true
     });
     res.json(paciente);
+
+    }catch(error){
+        console.log(error);
+        next();
+    }
+}
+
+// eliminar paciente metodo por su ID
+exports.eliminarPaciente = async (req, res, next) => {
+    try{
+        await Paciente.findOneAndDelete({_id : req.params.id });
+        res.json({mensaje: 'El paciente ha sido eliminado'});
 
     }catch(error){
         console.log(error);
