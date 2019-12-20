@@ -17,7 +17,18 @@ function App() {
   // Esta funcion se ejecuta automaticamente cuando se carga la App
   // o cuando realiza algun cambio
   useEffect(() => { // arrow function esto sustituye a los ciclos de vida
-    
+    // Buen lugar para consumir APIS
+    const consultarAPI = () => {
+      // esta variable clienteAxios es para no escribir la URL completa
+      clienteAxios.get('/pacientes')
+        .then(response => {
+          console.log(response)
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }
+    consultarAPI(); // Se llama funcion
     return () => {
       
     };
