@@ -22,7 +22,9 @@ function App() {
       // esta variable clienteAxios es para no escribir la URL completa
       clienteAxios.get('/pacientes')
         .then(response => {
-          console.log(response)
+          // colocar en el State el resultado
+          guardarCitas(response.data);
+
         })
         .catch(error => {
           console.log(error);

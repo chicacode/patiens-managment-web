@@ -9,7 +9,7 @@ const cors =  require('cors'); // CORS
 const app = express();
 
 // Habilitar CORS - Asegurar RESTAPI
-const whileList = ['http://localhost:3000'];
+const whileList = ['http://localhost:3000']; // solo este dominio puede acceder a la API
 const corsOptions = {
     origin: (origin, callback) => {
         // console.log(origin);
@@ -22,9 +22,11 @@ const corsOptions = {
     }
 }
 
-
 // habilitar CORS
-app.use(cors()); // De esta forma queda abierto CORS
+// De esta forma queda abierto CORS pero asegurado por developer
+// app.use( cors(corsOptions) ); 
+app.use(cors());
+
 
 // Se agrega todo lo que se requiere
 // conectar a MongoDB
