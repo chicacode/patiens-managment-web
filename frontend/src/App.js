@@ -8,7 +8,6 @@ import Cita from './components/Cita';
 
 function App() {
   // codigo JS - variables de entorno
-  console.log(process.env.REACT_APP_BACKEND_URL);
   return (
     <Router>
       <Switch>
