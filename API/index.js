@@ -3,9 +3,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes');
 const bodyParser = require('body-parser');
+const cors =  require('cors'); // CORS
 
 // create server
 const app = express();
+
+// Habilitar CORS
+app.use(cors());
 
 // Se agrega todo lo que se requiere
 // conectar a MongoDB
