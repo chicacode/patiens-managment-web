@@ -24,6 +24,17 @@ const Pacientes = ({citas}) => {
                                         {cita.fecha} - {cita.hora}
                                     </small>
                                     </div>
+                                    <p className="mb-0">
+                                        {cita.sintomas}
+                                    </p>
+                                    <div className="contacto py-3">
+                                        <p>
+                                            Dueño: {cita.propietario}
+                                        </p>
+                                        <p>
+                                            Teléfono: {cita.telefono}
+                                        </p>
+                                    </div>
                                 </a>
                             ))}
                         </div>
