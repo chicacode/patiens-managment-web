@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'; // Hooks
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // import cliente de Axios
@@ -42,7 +42,7 @@ function App() {
         <Route 
           exact 
           path="/" 
-          component={Pacientes}
+          component={() => <Pacientes citas={citas} />}
         />
         <Route 
           exact 
