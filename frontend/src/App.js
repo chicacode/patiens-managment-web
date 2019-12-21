@@ -36,7 +36,8 @@ function App() {
       }
       consultarAPI(); // Se llama funcion
     }
-  }, [] );
+  }, [consultar] ); // Es para que React este atento a los cambios
+  // cada vez que cambie que se ejecute de nuevo
 
   return (
     <Router>
