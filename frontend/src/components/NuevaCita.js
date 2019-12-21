@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 // Import Axios
 import clienteAxios from '../config/axios';
@@ -36,6 +36,8 @@ const NuevaCita = (props) => {
         clienteAxios.post('/pacientes', cita) // axios se pasan 2 parametros la url que se apunta y el contenido que se quire agregar
             .then(response =>{
                 console.log(response);
+
+                props.guardarConsulta(true);
 
                 // Redireccionar al component principal App
                 props.history.push('/')
@@ -130,5 +132,5 @@ const NuevaCita = (props) => {
         </Fragment>
     );
 }
-
-export default NuevaCita;
+// withRouter es para que no se pierdan las props 
+export default withRouter(NuevaCita);
