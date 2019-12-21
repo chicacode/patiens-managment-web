@@ -1,8 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const NuevaCita = () => {
-    // escribir codígo JS
+// Import Axios
+import clienteAxios from '../config/axios';
+
+const NuevaCita = (props) => {
+    // escribir code JS
     // Generar State como objeto
 
     const [cita, guardarCita] = useState({
@@ -15,6 +18,7 @@ const NuevaCita = () => {
         sintomas:''
     })
     // Funcion que lee datos del form
+    // Lee lo que el usuario escribe y lo actualiza en el State
     const actualizarState = e => {
         // e.target.name; EN QUE CAMPO ESTA ESCRIBIENDO
         // e.target.value; QUE VALOR - CONTENIDO ESTA ESCRIBIENDO
@@ -22,6 +26,21 @@ const NuevaCita = () => {
             ...cita, // hace una copia actual de lo que hay en el state y reescribe lo que el usuario escribe
             [e.target.name] : e.target.value
         })
+    }
+
+    // Enviar petición a la API
+    const crearNuevaCita = e => {
+        e.preventDefault();
+
+        // Enviar peticion por Axios
+        clienteAxios.post('/pacientes', cita) // axios se pasan 2 parametros la url que se apunta y el contenido que se quire agregar
+            .then(response =>{
+                console.log(response);
+
+                // Redireccionar al component principal App
+                props.history.push('/')
+
+            })
 
     }
     return ( 
@@ -34,7 +53,7 @@ const NuevaCita = () => {
                         </Link>
                     </div>
                     <div className="col-md-8 mx-auto">  
-                    <form className="bg-white p-5 bordered">
+                    <form onSubmit={crearNuevaCita} className="bg-white p-5 bordered">
                         <div className="form-group">
                             <label htmlFor="nombre">Nombre Mascota</label>
                             <input 
@@ -55,6 +74,7 @@ const NuevaCita = () => {
                                 id="propietario" 
                                 name="propietario" 
                                 placeholder="Nombre Propietario" 
+                                onChange={actualizarState}
                             />
                         </div>
 
@@ -66,6 +86,7 @@ const NuevaCita = () => {
                                 id="telefono" 
                                 name="telefono" 
                                 placeholder="Teléfono" 
+                                onChange={actualizarState}
                             />
                         </div>
 
@@ -75,7 +96,8 @@ const NuevaCita = () => {
                                 type="date" 
                                 className="form-control form-control-lg" 
                                 id="fecha" 
-                                name="fecha"  
+                                name="fecha" 
+                                onChange={actualizarState} 
                             />
                         </div>
 
@@ -85,7 +107,8 @@ const NuevaCita = () => {
                                 type="time" 
                                 className="form-control form-control-lg" 
                                 id="hora" 
-                                name="hora"  
+                                name="hora" 
+                                onChange={actualizarState} 
                             />
                         </div>
 
@@ -95,6 +118,7 @@ const NuevaCita = () => {
                                 className="form-control" 
                                 name="sintomas" 
                                 rows="6"
+                                onChange={actualizarState}
                             ></textarea>
                         </div>
 
