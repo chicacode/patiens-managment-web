@@ -12,29 +12,31 @@ import Cita from './components/Cita';
 function App() {
   // State de la App - ARRAY destructuring
   const [citas, guardarCitas] = useState([]); // valor inicial de arreglo vacio
+  const [consultar, guardarConsulta] = useState(true);
 
   // Si cambia alguna dependencia se ejecuta el useEffect
   // Esta funcion se ejecuta automaticamente cuando se carga la App
   // o cuando realiza algun cambio
   useEffect(() => { // arrow function esto sustituye a los ciclos de vida
     // Buen lugar para consumir APIS
-    const consultarAPI = () => {
-      // esta variable clienteAxios es para no escribir la URL completa
-      clienteAxios.get('/pacientes')
-        .then(response => {
-          // colocar en el State el resultado
-          guardarCitas(response.data);
+    if(consultar){
+      const consultarAPI = () => {
+        // esta variable clienteAxios es para no escribir la URL completa
+        clienteAxios.get('/pacientes')
+          .then(response => {
+            // colocar en el State el resultado
+            guardarCitas(response.data);
 
-        })
-        .catch(error => {
-          console.log(error);
-        })
+            // Deshabilitar la consulta
+            guardarConsulta(false); // deja de ejecutarse el if
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      }
+      consultarAPI(); // Se llama funcion
     }
-    consultarAPI(); // Se llama funcion
-    return () => {
-      
-    };
-  }, [])
+  }, [] );
 
   return (
     <Router>
@@ -42,12 +44,12 @@ function App() {
         <Route 
           exact 
           path="/" 
-          component={() => <Pacientes citas={citas} />}
+          component={ () => <Pacientes citas={citas} />}
         />
         <Route 
           exact 
           path="/new" 
-          component={NuevaCita}
+          component={ () =>  <NuevaCita guardarConsulta={guardarConsulta} />} // Para pasar props a componentes
         />
         <Route 
           exact 
