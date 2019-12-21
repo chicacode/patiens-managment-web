@@ -1,7 +1,29 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const NuevaCita = () => {
+    // escribir codígo JS
+    // Generar State como objeto
+
+    const [cita, guardarCita] = useState({
+        // debe ser definido igual que en el model-schema
+        nombre: '',
+        propietario: '',
+        fecha:'',
+        hora:'',
+        telefono:'',
+        sintomas:''
+    })
+    // Funcion que lee datos del form
+    const actualizarState = e => {
+        // e.target.name; EN QUE CAMPO ESTA ESCRIBIENDO
+        // e.target.value; QUE VALOR - CONTENIDO ESTA ESCRIBIENDO
+        guardarCita({
+            ...cita, // hace una copia actual de lo que hay en el state y reescribe lo que el usuario escribe
+            [e.target.name] : e.target.value
+        })
+
+    }
     return ( 
         <Fragment>
             <h1 className="my-5">Crear nueva cita</h1>
@@ -21,6 +43,7 @@ const NuevaCita = () => {
                                 id="nombre" 
                                 name="nombre" 
                                 placeholder="Nombre Mascota" 
+                                onChange={actualizarState}
                             />
                         </div>
 
@@ -74,7 +97,6 @@ const NuevaCita = () => {
                                 rows="6"
                             ></textarea>
                         </div>
-
 
                         <input type="submit" className="btn btn-primary mt-3 w-100 p-3 text-uppercase font-weight-bold" value="Crear Cita"  />
                     </form>

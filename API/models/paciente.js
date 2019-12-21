@@ -19,6 +19,10 @@ const pacientesSchema = new Schema({
         type: String, 
         trim: true
     },
+    telefono: {
+        type: String, 
+        trim: true
+    },
     sintomas: {
         type: String,
         trim: true
