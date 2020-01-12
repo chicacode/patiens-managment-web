@@ -6,6 +6,7 @@ const Cita = (props, {cita}) => {
     console.log("el nombre es", props.cita[0]);
     if(!props.cita){
         props.history.push('/');
+        return null;
     }
 
     // extraer por props
