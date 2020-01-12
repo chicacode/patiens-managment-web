@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import clienteAxios from '../config/axios';
+import Swal from 'sweetalert2';
 
 const Cita = (props, { cita } = props) => {
     // console.log("DEsde cita", cita);
@@ -24,6 +25,28 @@ const Cita = (props, { cita } = props) => {
             .catch(error => {
                 console.log(error);
             })
+        Swal.fire({
+            title: 'Estas seguro?',
+            text: "Una cota eliminada no se puede recuperar!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, elimínala!'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                'Deleted!',
+                'Tu cita ha sido eliminada.',
+                'success'
+                )
+            }
+        })
+
+
+
+
+
     }
     return ( 
         <Fragment>
