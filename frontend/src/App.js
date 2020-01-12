@@ -63,7 +63,7 @@ function App() {
             const cita = citas.filter(cita => cita._id === props.match.params.id)
           
             return(
-              <Cita cita={cita} />
+              <Cita cita={cita[0]} />
             )
           }}
           
