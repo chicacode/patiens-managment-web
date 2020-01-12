@@ -10,6 +10,7 @@ import NuevaCita from './components/NuevaCita';
 import Cita from './components/Cita';
 
 function App() {
+
   // State de la App - ARRAY destructuring
   const [citas, guardarCitas] = useState([]); // valor inicial de arreglo vacio
   const [consultar, guardarConsulta] = useState(true);
@@ -55,13 +56,16 @@ function App() {
         <Route 
           exact 
           path="/cita/:id" 
+          // render permite poner codigo con callback
           render={(props) =>{
+            // HOF Higher Order Function
+            console.log(props.match.params.id);
             const cita = citas.filter(cita => cita._id === props.match.params.id)
             console.log("EXTRAYENDO LA INFO", cita[0])
+
+
             return(
-              <Cita  
-                cita={cita[0]}
-              />
+              <Cita cita={cita[0]} />
             )
           }}
           
