@@ -3,16 +3,16 @@ import { Link, withRouter } from 'react-router-dom';
 
 const Cita = (props, {cita}) => {
     // console.log("DEsde cita", cita);
-    console.log("el nombre es", cita);
-    if(!cita){
-        props.history.push('/')
+    console.log("el nombre es", props.cita[0]);
+    if(!props.cita){
+        props.history.push('/');
     }
 
     // extraer por props
-    const { cita: {nombre} } = props;
+    // const { cita: {nombre} } = props; OTRA FORMA DE HACER
     return ( 
         <Fragment>
-            <h1>Nombre cita: {nombre} </h1>
+            <h1 className="my-5">Nombre cita: {props.cita.nombre} </h1>
 
             <div  className="container mt-5 py-5">
                 <div className="row">
