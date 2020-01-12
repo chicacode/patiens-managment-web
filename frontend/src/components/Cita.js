@@ -17,14 +17,6 @@ const Cita = (props, { cita } = props) => {
     // Eliminar un registro
     const eliminarCita = id => {
         console.log(id);
-        clienteAxios.delete(`/pacientes/${id}`)
-            .then(respuesta => {
-                props.guardarConsulta(true);
-                props.history.push('/');
-            })
-            .catch(error => {
-                console.log(error);
-            })
         Swal.fire({
             title: 'Estas seguro?',
             text: "Una cota eliminada no se puede recuperar!",
@@ -32,14 +24,25 @@ const Cita = (props, { cita } = props) => {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, elimínala!'
+            confirmButtonText: 'Si, Eliminar!'
         }).then((result) => {
             if (result.value) {
+
+                // Alerta de eliminado
                 Swal.fire(
                 'Deleted!',
                 'Tu cita ha sido eliminada.',
                 'success'
                 )
+                // Eliminar de la base de datos
+                clienteAxios.delete(`/pacientes/${id}`)
+                .then(respuesta => {
+                    props.guardarConsulta(true);
+                    props.history.push('/');
+                })
+                .catch(error => {
+                    console.log(error);
+                })
             }
         })
 
