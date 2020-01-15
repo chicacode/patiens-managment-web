@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder"
+    "dist": "electron-builder -m"
   },
   "author": "Geraldine Hernández Al Attrach",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^7.1.9",
-    "electron-builder": "^22.2.0"
+    "electron": "^7.1.9"
   }
 }
