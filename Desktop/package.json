@@ -4,11 +4,13 @@
   "description": "Aplicación de escritorio Electron",
   "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder"
   },
   "author": "Geraldine Hernández Al Attrach",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^7.1.9"
+    "electron": "^7.1.9",
+    "electron-builder": "^22.2.0"
   }
 }

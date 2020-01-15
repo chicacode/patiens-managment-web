@@ -9,7 +9,8 @@ function crearVentana() {
         minWidth: 800,
         minHeight: 600,
         center: true, 
-        show: false
+        show: false, 
+        icon: 'icon.png'
         // resizable: false
     });
     // Cuando la app es cerrada.
@@ -18,7 +19,7 @@ function crearVentana() {
     });
 
     // Cargar HTML
-appWindow.loadFile('./citas-HTML/index.html');
+appWindow.loadFile('./index.html');
 
     // Cuando la app este lista, mostrar la ventana
     appWindow.once('ready-to-show', () =>{
