@@ -1,21 +1,21 @@
 import React, { Fragment, useEffect, useState } from 'react'; // Hooks
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import app from './App.css';
 
 // import cliente de Axios
 import clienteAxios from './config/axios';
 
 // Componentes
-import Pacientes from './components/Pacientes';
-import NuevaCita from './components/NuevaCita';
-import Cita from './components/Cita';
+// import Pacientes from './components/Pacientes';
+// import NuevaCita from './components/NuevaCita';
+// import Cita from './components/Cita';
 import Form from './components/Form';
 
 function App() {
 
   // State de la App - ARRAY destructuring
-  const [citas, guardarCitas] = useState([]); // valor inicial de arreglo vacio
-  const [consultar, guardarConsulta] = useState(true);
+  // const [citas, guardarCitas] = useState([]); // valor inicial de arreglo vacio
+  // const [consultar, guardarConsulta] = useState(true);
 
 
 
@@ -42,7 +42,7 @@ function App() {
 
   return (
     <Fragment>
-      <h1>Bienvenido a la gestión de pacientes</h1>
+      <h1>Welcome to Dr. Pets</h1>
       <div className="container">
         <div className="row">
           <div className="col">

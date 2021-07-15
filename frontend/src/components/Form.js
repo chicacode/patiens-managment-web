@@ -8,9 +8,20 @@ const Form = () => {
         ownerName: '',
         date: '',
         time: '',
-        symptoms: '',
+        symptoms: ''
     })
 
+    const handleChange = e => {
+        // appointment.petName = e.target.value /* i cannot do this. It's not how react works*/
+        // I dot it through the set method
+        setAppointment({
+            ...appointment,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    // get / extract values / destructured
+   const { petName, ownerName, date, time, symptoms } = appointment;
 
     return (
         <Fragment>
@@ -23,7 +34,9 @@ const Form = () => {
                             type="text" 
                             className="form-control p-3" 
                             name="petName" 
-                            placeholder="Name" 
+                            placeholder="Name"
+                            onChange={handleChange}
+                            value={petName}
                         />
                     </div>
                     <div className="form-group col-md-6">
@@ -31,7 +44,9 @@ const Form = () => {
                         <input type="text" 
                             className="form-control p-3" 
                             name="ownerName" 
-                            placeholder="Owner" 
+                            placeholder="Owner"
+                            onChange={handleChange}
+                            value={ownerName}
                         />
                     </div>
                     <div className="form-group">
@@ -39,7 +54,9 @@ const Form = () => {
                         <input 
                             type="date" 
                             className="form-control" 
-                            name="date" 
+                            name="date"
+                            onChange={handleChange}
+                            value={date}
                         />
                     </div>
                     <div className="form-group">
@@ -47,7 +64,9 @@ const Form = () => {
                         <input 
                             type="time" 
                             className="form-control p-3" 
-                            name="time" 
+                            name="time"
+                            onChange={handleChange} 
+                            value={time}
                         />
                     </div>
                     <div className="form-row">
@@ -57,7 +76,9 @@ const Form = () => {
                                 type="text" 
                                 className="form-control p-3" 
                                 aria-label="With textarea"
-                                name="symptoms" 
+                                name="symptoms"
+                                onChange={handleChange}
+                                value={symptoms}
                              />
                         </div>
                        
