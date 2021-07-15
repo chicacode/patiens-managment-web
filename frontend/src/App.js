@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; // Hooks
+import React, { Fragment, useEffect, useState } from 'react'; // Hooks
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import app from './App.css';
 
@@ -9,6 +9,7 @@ import clienteAxios from './config/axios';
 import Pacientes from './components/Pacientes';
 import NuevaCita from './components/NuevaCita';
 import Cita from './components/Cita';
+import Form from './components/Form';
 
 function App() {
 
@@ -40,9 +41,19 @@ function App() {
   // }, [consultar] ); 
 
   return (
-    <div>
+    <Fragment>
       <h1>Bienvenido a la gestión de pacientes</h1>
-    </div>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <Form />
+          </div>
+          <div className="col">2</div>
+
+        </div>
+
+      </div>
+    </Fragment>
     // <Router>
     //   <Switch>
     //     <Route 
@@ -63,7 +74,7 @@ function App() {
     //         // HOF Higher Order Function
     //         console.log(props.match.params.id);
     //         const cita = citas.filter(cita => cita._id === props.match.params.id)
-          
+
     //         return(
     //           <Cita 
     //           cita={cita[0]} 
@@ -71,7 +82,7 @@ function App() {
     //           />
     //         )
     //       }}
-          
+
     //     />
     //   </Switch>
     // </Router>
