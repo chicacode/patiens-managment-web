@@ -13,10 +13,15 @@ import Form from './components/Form';
 
 function App() {
 
-  // State de la App - ARRAY destructuring
-  // const [citas, guardarCitas] = useState([]); // valor inicial de arreglo vacio
+  const [appointmentsList, addAppointments] = useState([]); 
   // const [consultar, guardarConsulta] = useState(true);
 
+  const createAppointment = app => {
+    addAppointments([
+      ...appointmentsList,
+      app
+    ])
+  }
 
 
   // useEffect(() => { // arrow function esto sustituye a los ciclos de vida
@@ -46,7 +51,9 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="col">
-            <Form />
+            <Form 
+              createAppointment={createAppointment}
+            />
           </div>
           <div className="col">2</div>
 

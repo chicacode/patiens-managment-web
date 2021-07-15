@@ -1,15 +1,19 @@
 import React, { Fragment, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-const Form = () => {
+const Form = ({createAppointment}) => {
 
     // Hooks: create state
-    const [appointment, setAppointment]= useState({
+    const [appointment, setAppointment] = useState({
         petName: '',
         ownerName: '',
         date: '',
         time: '',
         symptoms: ''
     })
+
+    // Hook: 2n state to Validate
+    const [error, setError] = useState(false);
 
     const handleChange = e => {
         // appointment.petName = e.target.value /* i cannot do this. It's not how react works*/
@@ -20,20 +24,51 @@ const Form = () => {
         })
     }
 
-    // get / extract values / destructured
-   const { petName, ownerName, date, time, symptoms } = appointment;
+    // get / extract values / destructured state
+    const { petName, ownerName, date, time, symptoms } = appointment;
 
+    const submitAppointment = e => {
+        e.preventDefault();
+
+        // Validate
+        if ( petName.trim() ==='' || ownerName.trim() === '' || date.trim() ==='' || time.trim() ==='' || symptoms.trim() === '') {
+
+            setError(true);
+            return; //ver que pasa con este return
+        }else{
+            
+        }
+
+        setError(false);
+    
+        // Asign ID
+        // setAppointment({
+        //     ...appointment,
+        //     id: uuidv4()
+        // })
+       appointment.id = uuidv4();
+
+       // Create apointment
+       createAppointment(appointment)
+    }
     return (
         <Fragment>
             <h2>Make an Appointment</h2>
-            
+         
+            {error ? <div className="alert alert-danger" role="alert">
+                         All inputs are required: alert—check it out!
+                     </div> 
+                     : null }
+            <form
+                onSubmit={submitAppointment}
+            >
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label htmlFor="petName">Pet Name</label>
-                        <input 
-                            type="text" 
-                            className="form-control p-3" 
-                            name="petName" 
+                        <input
+                            type="text"
+                            className="form-control p-3"
+                            name="petName"
                             placeholder="Name"
                             onChange={handleChange}
                             value={petName}
@@ -41,9 +76,9 @@ const Form = () => {
                     </div>
                     <div className="form-group col-md-6">
                         <label htmlFor="ownerName">Owner Name</label>
-                        <input type="text" 
-                            className="form-control p-3" 
-                            name="ownerName" 
+                        <input type="text"
+                            className="form-control p-3"
+                            name="ownerName"
                             placeholder="Owner"
                             onChange={handleChange}
                             value={ownerName}
@@ -51,9 +86,9 @@ const Form = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="date">Date</label>
-                        <input 
-                            type="date" 
-                            className="form-control" 
+                        <input
+                            type="date"
+                            className="form-control"
                             name="date"
                             onChange={handleChange}
                             value={date}
@@ -61,32 +96,32 @@ const Form = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="time">Hour</label>
-                        <input 
-                            type="time" 
-                            className="form-control p-3" 
+                        <input
+                            type="time"
+                            className="form-control p-3"
                             name="time"
-                            onChange={handleChange} 
+                            onChange={handleChange}
                             value={time}
                         />
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <label htmlFor="symptoms">Symptoms</label>
-                            <textarea 
-                                type="text" 
-                                className="form-control p-3" 
+                            <textarea
+                                type="text"
+                                className="form-control p-3"
                                 aria-label="With textarea"
                                 name="symptoms"
                                 onChange={handleChange}
                                 value={symptoms}
-                             />
+                            />
                         </div>
-                       
+
                     </div>
                     <button type="submit" className="btn btn-primary mt-5">Add Appointment</button>
                 </div>
-       
-                
+            </form>
+
 
 
         </Fragment>
