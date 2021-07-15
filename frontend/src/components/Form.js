@@ -1,13 +1,24 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 const Form = () => {
+
+    // Hooks: create state
+    const [appointment, setAppointment]= useState({
+        petName: '',
+        ownerName: '',
+        date: '',
+        time: '',
+        symptoms: '',
+    })
+
+
     return (
         <Fragment>
             <h2>Make an Appointment</h2>
             
-                <div classNameName="form-row">
+                <div className="form-row">
                     <div className="form-group col-md-6">
-                        <label for="petName">Pet Name</label>
+                        <label htmlFor="petName">Pet Name</label>
                         <input 
                             type="text" 
                             className="form-control p-3" 
@@ -16,7 +27,7 @@ const Form = () => {
                         />
                     </div>
                     <div className="form-group col-md-6">
-                        <label for="ownerName">Owner Name</label>
+                        <label htmlFor="ownerName">Owner Name</label>
                         <input type="text" 
                             className="form-control p-3" 
                             name="ownerName" 
@@ -24,7 +35,7 @@ const Form = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label for="date">Date</label>
+                        <label htmlFor="date">Date</label>
                         <input 
                             type="date" 
                             className="form-control" 
@@ -32,7 +43,7 @@ const Form = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label for="time">Hour</label>
+                        <label htmlFor="time">Hour</label>
                         <input 
                             type="time" 
                             className="form-control p-3" 
@@ -41,7 +52,7 @@ const Form = () => {
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label for="symptoms">Symptoms</label>
+                            <label htmlFor="symptoms">Symptoms</label>
                             <textarea 
                                 type="text" 
                                 className="form-control p-3" 
