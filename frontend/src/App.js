@@ -20,6 +20,11 @@ function App() {
     ])
   }
 
+  const deleteAppointment = id =>{
+    const newAppointments = appointmentsList.filter(apo => apo.id !== id); //return a new array
+    addAppointments(newAppointments);
+  }
+
   return (
     <Fragment>
       <h1 className="p-5">Welcome to Dr. Pets</h1>
@@ -36,6 +41,7 @@ function App() {
                <Appointment 
                  key={appointment.id}
                  appointment={appointment}
+                 deleteAppointment={deleteAppointment}
                />
              ))}
         
