@@ -1,22 +1,27 @@
 import React, { Fragment, useEffect, useState } from 'react'; // Hooks
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import appStyle from './App.css';
 
-// import cliente de Axios
-//import clienteAxios from './config/axios';
 
-// Componentes
+
 import Appointment from './components/Appointment';
 import Form from './components/Form';
 
 function App() {
 
-  const [appointmentsList, addAppointments] = useState([]); 
+  const initialAppointments = JSON.parse(localStorage.getItem('citas'));
+  if(!initialAppointments){
+    initialAppointments = [];
+  }
 
+  // const [appointmentsList, addAppointments] = useState([]); before
+  const [appointmentsList, addAppointments] = useState(initialAppointments); // after
   // Realiza ciertas operaciones cuando el state cambia
   useEffect( () => {
-    console.log('Listo');
-  });
+   
+  }, [appointmentsList]); 
+
+  // Para que se ejecute una vez hay que pasarle un array vacio 
+  // esta pediente de los cambios que sucede en la App didMoun didUpdate
 
   const createAppointment = app => {
     addAppointments([
@@ -59,38 +64,6 @@ function App() {
 
       </div>
     </Fragment>
-    // <Router>
-    //   <Switch>
-    //     <Route 
-    //       exact 
-    //       path="/" 
-    //       component={ () => <Pacientes citas={citas} />}
-    //     />
-    //     <Route 
-    //       exact 
-    //       path="/new" 
-    //       component={ () =>  <NuevaCita guardarConsulta={guardarConsulta} />} // Para pasar props a componentes
-    //     />
-    //     <Route 
-    //       exact 
-    //       path="/cita/:id" 
-    //       // render permite poner codigo con callback
-    //       render={(props) =>{
-    //         // HOF Higher Order Function
-    //         console.log(props.match.params.id);
-    //         const cita = citas.filter(cita => cita._id === props.match.params.id)
-
-    //         return(
-    //           <Cita 
-    //           cita={cita[0]} 
-    //           guardarConsulta={guardarConsulta}
-    //           />
-    //         )
-    //       }}
-
-    //     />
-    //   </Switch>
-    // </Router>
   );
 }
 
