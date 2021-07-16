@@ -4,8 +4,8 @@ import img from '../assets/img/img.jpg';
 const Appointment = ({ appointment }) => {
     const { petName, ownerName, date, time, symptoms } = appointment;
     return (
-        <div className="card">
-            <img className="card-img-top" src={img} alt="Card image cap" style={{ width: "100px" }} />
+        <div className="card" style={{ width: "50rem;",border: '1px solid black', borderRadius: "10px!important" }}>
+            <img className="card-img-top" src={img} alt="Card image cap" style={{ width: "180px" }} />
             <div className="card-body">
                 <p className="card-text">
                     <span>Pet: {petName}</span>

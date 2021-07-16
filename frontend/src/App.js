@@ -22,8 +22,8 @@ function App() {
 
   return (
     <Fragment>
-      <h1>Welcome to Dr. Pets</h1>
-      <div className="container">
+      <h1 className="p-5">Welcome to Dr. Pets</h1>
+      <div className="container mt-5">
         <div className="row appStyle">
           <div className="col">
             <Form 
