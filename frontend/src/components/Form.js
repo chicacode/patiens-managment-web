@@ -40,16 +40,22 @@ const Form = ({createAppointment}) => {
         }
 
         setError(false);
-    
-        // Asign ID
-        // setAppointment({
-        //     ...appointment,
-        //     id: uuidv4()
-        // })
+
        appointment.id = uuidv4();
 
        // Create apointment
-       createAppointment(appointment)
+       createAppointment(appointment);
+       console.log(appointment);
+
+       // Restart form
+       setAppointment({
+        petName: '',
+        ownerName: '',
+        date: '',
+        time: '',
+        symptoms: ''
+       })
+
     }
     return (
         <Fragment>

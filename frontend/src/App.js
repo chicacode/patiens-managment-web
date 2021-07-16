@@ -1,20 +1,17 @@
-import React, { Fragment, useEffect, useState } from 'react'; // Hooks
+import React, { Fragment, useState } from 'react'; // Hooks
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import app from './App.css';
+import appStyle from './App.css';
 
 // import cliente de Axios
-import clienteAxios from './config/axios';
+//import clienteAxios from './config/axios';
 
 // Componentes
-// import Pacientes from './components/Pacientes';
-// import NuevaCita from './components/NuevaCita';
-// import Cita from './components/Cita';
+import Appointment from './components/Appointment';
 import Form from './components/Form';
 
 function App() {
 
   const [appointmentsList, addAppointments] = useState([]); 
-  // const [consultar, guardarConsulta] = useState(true);
 
   const createAppointment = app => {
     addAppointments([
@@ -23,39 +20,25 @@ function App() {
     ])
   }
 
-
-  // useEffect(() => { // arrow function esto sustituye a los ciclos de vida
-  //   
-  //   if(consultar){
-  //     const consultarAPI = () => {
-  //       // esta variable clienteAxios es para no escribir la URL completa
-  //       clienteAxios.get('/pacientes')
-  //         .then(response => {
-  //           // colocar en el State el resultado
-  //           guardarCitas(response.data);
-
-  //           // Deshabilitar la consulta
-  //           guardarConsulta(false); // deja de ejecutarse el if
-  //         })
-  //         .catch(error => {
-  //           console.log(error);
-  //         })
-  //     }
-  //     consultarAPI(); // Se llama funcion
-  //   }
-  // }, [consultar] ); 
-
   return (
     <Fragment>
       <h1>Welcome to Dr. Pets</h1>
       <div className="container">
-        <div className="row">
+        <div className="row appStyle">
           <div className="col">
             <Form 
               createAppointment={createAppointment}
             />
           </div>
-          <div className="col">2</div>
+          <div className="col">
+            <h2>Manage Appointments</h2>
+             {appointmentsList.map( appointment => (
+               <Appointment 
+                 key={appointment.id}
+                 appointment={appointment}
+               />
+             ))}
+          </div>
 
         </div>
 
