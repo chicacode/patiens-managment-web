@@ -5,7 +5,7 @@ const Appointment = ({ appointment, deleteAppointment }) => {
     const { petName, ownerName, date, time, symptoms } = appointment;
     return (
         <Fragment>
-            <div className="card" style={{ width: "50rem", border: '1px solid black', borderRadius: "10px!important" }}>
+            <div className="card justify-content-center" style={{ width: "50rem", border: '1px solid black', borderRadius: "10px!important" }}>
                 <img className="card-img-top p-4" src={img} alt="Card image cap" style={{ width: "180px" }} />
                 <div className="card-body">
                     <p className="card-text p-1">

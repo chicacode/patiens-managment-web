@@ -59,15 +59,16 @@ const Form = ({createAppointment}) => {
     }
     return (
         <Fragment>
-            <h2>Make an Appointment</h2>
+            <h2 className="text-center">Make an Appointment</h2>
          
             {error ? <div className="alert alert-danger" role="alert">
                          All inputs are required: alert—check it out!
                      </div> 
                      : null }
+        
             <form
                 onSubmit={submitAppointment}
-            >
+              >
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label htmlFor="petName">Pet Name</label>

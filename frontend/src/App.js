@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'; // Hooks
+import React, { Fragment, useEffect, useState } from 'react'; // Hooks
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import appStyle from './App.css';
 
@@ -13,6 +13,11 @@ function App() {
 
   const [appointmentsList, addAppointments] = useState([]); 
 
+  // Realiza ciertas operaciones cuando el state cambia
+  useEffect( () => {
+    console.log('Listo');
+  });
+
   const createAppointment = app => {
     addAppointments([
       ...appointmentsList,
@@ -25,6 +30,9 @@ function App() {
     addAppointments(newAppointments);
   }
 
+  const title = appointmentsList.length === 0 ? 'No appointments' : 'Manage Appointments';
+  
+
   return (
     <Fragment>
       <h1 className="p-5">Welcome to Dr. Pets</h1>
@@ -36,7 +44,7 @@ function App() {
             />
           </div>
           <div className="col">
-            <h2>Manage Appointments</h2>
+            <h2 className="text-center">{title}</h2>
              {appointmentsList.map( appointment => (
                <Appointment 
                  key={appointment.id}
