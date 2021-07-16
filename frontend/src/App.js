@@ -1,27 +1,28 @@
-import React, { Fragment, useEffect, useState } from 'react'; // Hooks
+import React, { Fragment, useEffect, useState } from 'react'; 
 import appStyle from './App.css';
-
-
-
 import Appointment from './components/Appointment';
 import Form from './components/Form';
 
 function App() {
 
-  const initialAppointments = JSON.parse(localStorage.getItem('citas'));
+ let initialAppointments = JSON.parse(localStorage.getItem('appointments'));
   if(!initialAppointments){
     initialAppointments = [];
   }
 
   // const [appointmentsList, addAppointments] = useState([]); before
-  const [appointmentsList, addAppointments] = useState(initialAppointments); // after
-  // Realiza ciertas operaciones cuando el state cambia
+  const [appointmentsList, addAppointments] = useState(initialAppointments); // after lStorage
+
   useEffect( () => {
-   
+   if(initialAppointments){
+     localStorage.setItem('appointments', JSON.stringify(appointmentsList));
+   }else{
+    localStorage.setItem('appointments', JSON.stringify([]));
+   }
   }, [appointmentsList]); 
 
-  // Para que se ejecute una vez hay que pasarle un array vacio 
-  // esta pediente de los cambios que sucede en la App didMoun didUpdate
+  // To execute just once pass it an empty array 
+  // listen the change that happens in App didMoun didUpdate
 
   const createAppointment = app => {
     addAppointments([
@@ -37,7 +38,6 @@ function App() {
 
   const title = appointmentsList.length === 0 ? 'No appointments' : 'Manage Appointments';
   
-
   return (
     <Fragment>
       <h1 className="p-5">Welcome to Dr. Pets</h1>
@@ -59,9 +59,7 @@ function App() {
              ))}
         
           </div>
-
         </div>
-
       </div>
     </Fragment>
   );
