@@ -38,6 +38,7 @@ function App() {
                  appointment={appointment}
                />
              ))}
+        
           </div>
 
         </div>
