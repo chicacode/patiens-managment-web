@@ -19,7 +19,7 @@ function App() {
    }else{
     localStorage.setItem('appointments', JSON.stringify([]));
    }
-  }, [appointmentsList]); 
+  }, [appointmentsList, initialAppointments]); 
 
   // To execute just once pass it an empty array 
   // listen the change that happens in App didMoun didUpdate
