@@ -69,6 +69,7 @@ const Form = ({createAppointment}) => {
         
             <form
                 onSubmit={submitAppointment}
+                className="contenido-principal"
               >
                 <div className="form-row">
                     <div className="form-group col-md-6">
@@ -126,7 +127,7 @@ const Form = ({createAppointment}) => {
                         </div>
 
                     </div>
-                    <button type="submit" className="btn btn-success mt-5">Add Appointment</button>
+                    <button type="submit" className="btn btn-secondary mt-5">Add Appointment</button>
                 </div>
             </form>
         </Fragment>
