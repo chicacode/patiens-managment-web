@@ -7,15 +7,25 @@ const InputForm = () => {
         setState( parseInt(e.target.value))
     }
 
+    const setBudget = e => {
+        e.preventDefaul();
+        console.log(e)
+
+        //validate
+
+
+        //ok validate
+    }
     return(
         <Fragment>
             <h2>Enter you budget</h2>
-            <form>
+            <form 
+                 onSubmit={setBudget}>
                 <input 
                     type="number"
                     className="u-full-width"
                     placeholder="budget $"
-                    onChange={handleChange}
+                    onChange={handleChange} // another way is e =>  setState( parseInt(e.target.value))
                 />
 
                 <input 
