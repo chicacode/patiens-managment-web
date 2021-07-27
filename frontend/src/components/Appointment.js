@@ -7,7 +7,7 @@ const Appointment = ({ appointment, deleteAppointment }) => {
     return (
         <Fragment>
             <div className="card justify-content-center  contenido-principal" style={{ width: "50rem", border: '1px solid black', borderRadius: "10px!important" }}>
-                <img className="card-img-top p-4" src={dogImg}  style={{ width: "180px" }} />
+                <img className="card-img-top p-4" src={dogImg} style={{ width: "180px" }} />
                 <div className="card-body">
                     <p className="card-text p-1">
                         <span>Pet: {petName}</span>
@@ -25,9 +25,9 @@ const Appointment = ({ appointment, deleteAppointment }) => {
                         <span> Symptoms: {symptoms}</span>
                     </p>
                 </div>
-                <button 
-                className="btn btn-primary p-2 m-4"
-                onClick={() => deleteAppointment(appointment.id)}
+                <button
+                    className="btn btn-primary p-2 m-4"
+                    onClick={() => deleteAppointment(appointment.id)}
                 >
                     Delete Appointment &times;</button>
 
