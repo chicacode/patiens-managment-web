@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import Error from './Error';
 
-const InputForm = () => {
+const InputForm = ({ setnewBudget, setRemaining, updateQuestion }) => {
     const [state, setState] = useState(0);
     const [error, setError] = useState(false);
 
@@ -22,10 +22,13 @@ const InputForm = () => {
 
         // //ok validate
         setError(false);
+        setnewBudget(state);
+        setRemaining(state);
+        updateQuestion(false);
     }
     return (
         <Fragment>
-            <h2>Enter you budget</h2>
+            <h2>Enter your budget</h2>
             {error ? <Error message="Error: There's an Error. Enter a valid number" /> : null}
             <form
                 onSubmit={setBudget}

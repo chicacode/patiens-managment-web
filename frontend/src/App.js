@@ -3,6 +3,7 @@ import appStyle from './App.css';
 import Appointment from './components/Appointment';
 import Form from './components/Form';
 import InputForm from './components/InputForm';
+import BudgetForm from './components/BudgetForm';
 
 function App() {
 
@@ -13,6 +14,12 @@ function App() {
 
   // const [appointmentsList, addAppointments] = useState([]); before
   const [appointmentsList, addAppointments] = useState(initialAppointments); // after lStorage
+  // state de app
+  const [budget, setnewBudget] = useState(0);
+  const [remaining, setRemaining] = useState(0);
+
+  // upload conditional component
+  const [showQuestion, updateQuestion] = useState(true);
 
   useEffect(() => {
     if (initialAppointments) {
@@ -64,7 +71,26 @@ function App() {
       </div>
 
       <div className="contenido-principal contenido">
-        <InputForm />
+{/* carga condicional de componente */}
+        {showQuestion ? (
+          <InputForm
+            setnewBudget={setnewBudget}
+            setRemaining={setRemaining}
+            updateQuestion={updateQuestion}
+          />
+        )
+        : (
+            <div className="row">
+              <div className="one-half column">
+                <BudgetForm />
+              </div>
+              <div className="one-half column">
+                2
+              </div>
+            </div>
+          )
+        }
+
       </div>
     </Fragment>
   );
