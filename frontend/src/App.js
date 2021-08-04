@@ -17,6 +17,14 @@ function App() {
   // state de app
   const [budget, setnewBudget] = useState(0);
   const [remaining, setRemaining] = useState(0);
+  const [expenses, saveExpenses] = useState([]);
+
+  const addNewExpense = exp =>{
+    saveExpenses([
+      ...expenses, //copy array
+      exp // add new element
+    ])
+  }
 
   // upload conditional component
   const [showQuestion, updateQuestion] = useState(true);
@@ -48,7 +56,7 @@ function App() {
 
   return (
     <Fragment>
-      <h1 className="p-5">Welcome to Dr. Pets</h1>
+      <h1 className="p-5 ">Welcome to Dr. Pets</h1>
       <div className="container mt-5">
         <div className="row appStyle">
           <div className="col">
@@ -82,7 +90,9 @@ function App() {
         : (
             <div className="row">
               <div className="one-half column">
-                <BudgetForm />
+                <BudgetForm 
+                  addNewExpense={addNewExpense}
+                />
               </div>
               <div className="one-half column">
                 2
