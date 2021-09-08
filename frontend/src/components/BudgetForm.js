@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import Error from './Error';
 import shortid from 'shortid';
 
-const BudgetForm = ({addNewExpense}) => {
-    console.log(addNewExpense)
+const BudgetForm = ({saveExp, saveCreateExp}) => {
+    console.log(saveExp)
     const [expense, saveExpense] = useState('');
     const [quantity, saveQuantity] = useState(0);
     const [error, saveError] = useState(false);
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('Hola')
+
         //validate
         if(quantity < 1 || isNaN(quantity) || expense.trim() === ''){
             saveError(true);
@@ -26,7 +26,8 @@ const BudgetForm = ({addNewExpense}) => {
         }
         
         // pass props to App component
-        addNewExpense(_expenses);
+        saveExp(_expenses);
+        saveCreateExp(true)
 
         // reset form
         saveExpense('');
