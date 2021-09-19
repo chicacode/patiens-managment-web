@@ -23,6 +23,7 @@ function App() {
   const [exp, saveExp] = useState({})
   const [createExp, saveCreateExp] = useState(false)
 
+  // useEffect que actualiza el restante
   useEffect(
     () => {
         if (createExp)  {
@@ -33,7 +34,7 @@ function App() {
             setRemaining(presResto);
             saveCreateExp(false);
         }
-    }, [createExp, exp, expenses, remaining]
+    }, [createExp, exp, expenses, remaining] // Las variables que utilizamos son dependencias
 );
 
  
