@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import appStyle from './App.css';
+import appStyle from './app.css';
 import Appointment from './components/Appointment';
 import Form from './components/Form';
 import InputForm from './components/InputForm';
