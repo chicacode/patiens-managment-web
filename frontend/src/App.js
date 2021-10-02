@@ -15,7 +15,7 @@ function App() {
 
   // const [appointmentsList, addAppointments] = useState([]); before
   const [appointmentsList, addAppointments] = useState(initialAppointments); // after lStorage
-  // state de app
+ 
   const [budget, setnewBudget] = useState(0);
   const [remaining, setRemaining] = useState(0);
   const [showQuestion, updateQuestion] = useState(true);
